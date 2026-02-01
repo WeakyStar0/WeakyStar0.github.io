@@ -1,0 +1,603 @@
+---
+import "../styles/global.css";
+import ProjectOverlay from "../components/ProjectOverlay.astro";
+
+const pageTitle = "Weaky";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{pageTitle}</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Nova+Flat&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <ProjectOverlay />
+        <!-- NAVIGATION INDICATORS -->
+        <div class="nav-indicators">
+            <div class="dot active" data-index="0">
+                <span class="dot-label">Home</span>
+            </div>
+            <div class="dot" data-index="1">
+                <span class="dot-label">About</span>
+            </div>
+            <div class="dot" data-index="2">
+                <span class="dot-label">Skills</span>
+            </div>
+            <div class="dot" data-index="3">
+                <span class="dot-label">Services</span>
+            </div>
+            <div class="dot" data-index="4">
+                <span class="dot-label">Projects</span>
+            </div>
+            <div class="dot" data-index="5">
+                <span class="dot-label">Contact</span>
+            </div>
+        </div>
+
+        <main class="snap-container">
+            <!-- SECTION 1: HERO -->
+            <section class="screen-section hero">
+                <div class="content">
+                    <h1>Weaky★</h1>
+                    <h2>Full Stack Developer & Creative</h2>
+                    <p class="quote">
+                        "Building the bridge between logic and imagination."
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: ABOUT ME -->
+            <section class="screen-section about">
+                <div class="content-wrapper">
+                    <!-- Texto -->
+                    <div class="about-text glass-card">
+                        <h2>About Me</h2>
+                        <p>
+                            I’m Marcelo Dias, a developer based in Portugal.
+                            <br />
+                            Over the last 3 years, I’ve focused on bridging the gap
+                            between functional code and engaging design.
+                            <br /><br />
+                            I don’t just build websites... I craft interactive experiences,
+                            whether that’s a web application or an immersive game.
+                            <br /><br />
+                            I am currently open to new challenges where I can push
+                            the boundaries of what's possible on the web.
+                        </p>
+                    </div>
+
+                    <!-- Stats / Info vertical -->
+                    <div class="about-stats">
+                        <div class="stat glass-card">
+                            <strong>3+ Years</strong>
+                            <span>Experience</span>
+                        </div>
+                        <div class="stat glass-card">
+                            <strong>Ongoing Projects</strong>
+                            <span>Always Building</span>
+                        </div>
+                        <div class="stat glass-card">
+                            <strong>Open to Work</strong>
+                            <span>Opportunities</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: SKILLS -->
+            <section class="screen-section skills">
+                <div class="content">
+                    <h2>My Skills</h2>
+                    <h3>My Tech Constellation</h3>
+
+                    <div class="skills-wrapper">
+                        <!-- 1. Web Development -->
+                        <div class="skill-category">
+                            <h4>Web Development</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <i class="devicon-html5-plain colored"
+                                    ></i><span>HTML5</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-css3-plain colored"
+                                    ></i><span>CSS3</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-bootstrap-plain colored"
+                                    ></i><span>Bootstrap</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-react-original colored"
+                                    ></i><span>React</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-astro-plain colored"
+                                    ></i><span>Astro</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-nodejs-plain colored"
+                                    ></i><span>Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Programming Languages -->
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <i class="devicon-javascript-plain colored"
+                                    ></i><span>JS</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-csharp-plain colored"
+                                    ></i><span>C#</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-java-plain colored"
+                                    ></i><span>Java</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-dart-plain colored"
+                                    ></i><span>Dart</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Databases -->
+                        <div class="skill-category">
+                            <h4>Databases</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <i class="devicon-postgresql-plain colored"
+                                    ></i><span>Postgres</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-mongodb-plain colored"
+                                    ></i><span>MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Creation Tools (Combined Design + Content) -->
+                        <div class="skill-category">
+                            <h4>Creation Tools</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <i class="devicon-figma-plain colored"
+                                    ></i><span>Figma</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-photoshop-plain colored"
+                                    ></i><span>Photoshop</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-illustrator-plain colored"
+                                    ></i><span>Illustrator</span>
+                                </div>
+                                <div class="skill-card">
+                                    <img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/1/14/Clipstudiopaint_app_logo.png"
+                                        width="30"
+                                        height="30"
+                                        alt="CSP"
+                                    />
+                                    <span>ClipStudioPaint</span>
+                                </div>
+                                <div class="skill-card">
+                                    <img
+                                        src="https://cdn.simpleicons.org/davinciresolve/white"
+                                        width="30"
+                                        height="30"
+                                        alt="DaVinci"
+                                    />
+                                    <span>DaVinci</span>
+                                </div>
+
+                                <div class="skill-card">
+                                    <img
+                                        src="https://cdn.simpleicons.org/obsstudio/white"
+                                        width="30"
+                                        height="30"
+                                        alt="OBS"
+                                    />
+                                    <span>OBS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Game Dev & 3D -->
+                        <div class="skill-category">
+                            <h4>Game Dev & 3D</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <img
+                                        src="https://imgur.com/nUUwy3u.png"
+                                        width="30"
+                                        height="30"
+                                        alt="Unity"
+                                    />
+                                    <span>Unity</span>
+                                </div>
+
+                                <div class="skill-card">
+                                    <i class="devicon-blender-original colored"
+                                    ></i>
+                                    <span>Blender</span>
+                                </div>
+
+                                <div class="skill-card">
+                                    <img
+                                        src="https://cdn.simpleicons.org/blockbench/white"
+                                        width="30"
+                                        height="30"
+                                        alt="BB"
+                                    />
+                                    <span>Blockbench</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Tools -->
+                        <div class="skill-category">
+                            <h4>Development Tools</h4>
+                            <div class="skill-cards">
+                                <div class="skill-card">
+                                    <i class="devicon-vscode-plain colored"
+                                    ></i><span>VS Code</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i
+                                        class="devicon-visualstudio-plain colored"
+                                    ></i>
+                                    <span>VS 2022</span>
+                                </div>
+                                <div class="skill-card">
+                                    <i class="devicon-intellij-plain colored"
+                                    ></i><span>IntelliJ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: SERVICES -->
+            <section class="screen-section services">
+                <div class="content">
+                    <h2>Services I Offer</h2>
+                    <p class="quote">
+                        "If you’re looking for someone who can handle both the
+                        technical side and the creative side of a project,
+                        you’re in the right place."
+                    </p>
+
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <h4>Full-Stack Development</h4>
+                            <p>
+                                I design and build modern, scalable web
+                                applications.
+                            </p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Web & Identity Design</h4>
+                            <p>
+                                I craft cohesive digital identities and visual
+                                branding.
+                            </p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Video Editing</h4>
+                            <p>
+                                Storytelling, pacing, narrative, gaming, or
+                                socials.
+                            </p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Game Development</h4>
+                            <p>
+                                Interactive experiences from prototypes to
+                                complete projects.
+                            </p>
+                        </div>
+                        <div class="service-item">
+                            <h4>PC Building & Setup</h4>
+                            <p>
+                                Hardware selection, OS setup, and optimization.
+                            </p>
+                        </div>
+                        <div class="service-item">
+                            <h4>Data Analysis</h4>
+                            <p>Clear dashboards and visual insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: PROJECTS -->
+            <section class="screen-section projects">
+                <div class="content">
+                    <h2>My Projects</h2>
+                    <h3>Featured Work</h3>
+
+                    <div class="projects-grid">
+                        <!-- Project 1 -->
+                        <div
+                            class="project-card"
+                            data-images="https://img.itch.zone/aW1hZ2UvMzY1NjQ2Ny8yMTg0MjA1MC5wbmc=/original/%2ByPqED.png,
+                            https://img.itch.zone/aW1hZ2UvMzY1NjQ2Ny8yMTgzNzcwNS5wbmc=/original/223nHE.png,
+                            https://img.itch.zone/aW1hZ2UvMzY1NjQ2Ny8yMTgzODI3OS5wbmc=/original/d3CMAw.png,
+                            https://img.itch.zone/aW1hZ2UvMzY1NjQ2Ny8yMTgzNzc2NC5wbmc=/original/Fl%2Fssu.png,
+                            https://img.itch.zone/aW1nLzIxODM4NzQ2LmdpZg==/original/KAAd79.gif"
+                            data-desc="Jogo de aventura e plataforma ambientado na mente surreal do Dr. Silverstein, um cientista excêntrico cuja explosão laboratorial dá origem ao Crazy Duck — uma entidade bizarra que pretende dominar o mundo com um exército de patos mecânicos. O jogador explora cenários caóticos e distorcidos, recolhendo fragmentos da memória do Dr. Silverstein enquanto enfrenta inimigos absurdos e supera desafios de plataforma com movimentos precisos e mecânicas únicas. O jogo combina narrativa humorística e estilizada com jogabilidade fluida, oferecendo uma experiência imersiva e visualmente marcante."
+                            data-features="Exploração surreal|Recolha de fragmentos|Combate rápido|Salto e mobilidade"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://imgur.com/8kuUUXM.png"
+                                    alt="CrazyDuck"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>The Delusion of Crazy Duck</h4>
+                                <p>
+                                    A surreal platformer game with unique
+                                    mechanics.
+                                </p>
+                                <div class="project-tech">
+                                    <span>Unity</span>
+                                    <span>C#</span>
+                                    <span>Blender</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div
+                            class="project-card"
+                            data-images="https://images.unsplash.com/photo-1550745165-9bc0b252726f,
+                            https://images.unsplash.com/photo-1555066931-4365d14bab8c,
+                            https://images.unsplash.com/photo-1542751371-adc38448a05e"
+                            data-desc="Weekoo is a Discord App that blends economy, RPG mechanics, and casino-style gameplay into a single, engaging platform. Designed to increase server activity and retention, it allows users to earn XP, level up, collect rare items, and participate in interactive social features. Weekoo also includes a dynamic economy with trading and a robust shop system, alongside moderation and logging tools, providing server administrators with a solution for gamification, entertainment, and community management."
+                            data-features="Casino & economy|RPG progression|Shop & marketplace|Moderation & logging|Social features"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://imgur.com/7NJIFke.png"
+                                    alt="Weekoo - My Discord App"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>Weekoo - My Discord App</h4>
+                                <p>
+                                    A Discord App with RPG mechanics and
+                                    moderation.
+                                </p>
+                                <div class="project-tech">
+                                    <span>JS</span>
+                                    <span>Discord API</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div
+                            class="project-card"
+                            data-images="https://imgur.com/mTxx524.png,
+                            https://imgur.com/OCdmejx.png,
+                            https://imgur.com/Ir2ynhi.png,
+                            https://imgur.com/RkAFh85.png,
+                            https://imgur.com/IWjpCzM.png"
+                            data-desc="5 Nights Without Panados is a small survival horror game where the player must endure from midnight to 6 AM against a variety of unpredictable threats. Using a security camera system, players monitor the environment to detect dangers while managing limited resources such as flashlight energy. The game features unique mechanics for each enemy, requiring players to learn patterns and react strategically to survive. Immersive 3D audio cues, interactive environment elements, and dynamic challenges create a tense and engaging gameplay experience."
+                            data-features="Camera monitoring|Resource management|Unique enemy mechanics|3D audio|Interactive environment"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://imgur.com/mTxx524.png"
+                                    alt="5 Nights Without Panados (🇵🇹)"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>5 Nights Without Panados (🇵🇹)</h4>
+                                <p>
+                                    A small survival horror game with unique
+                                    enemy mechanics and immersive audio.
+                                </p>
+                                <div class="project-tech">
+                                    <span>Unity</span>
+                                    <span>C#</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div
+                            class="project-card"
+                            data-images="https://imgur.com/mpX5yrm.png,
+                            https://imgur.com/Vy5J0Ot.png,
+                            https://imgur.com/yBggIDW.png"
+                            data-desc="Viriatos Scouting is a mobile and backoffice application designed for efficient athlete management. It allows clubs and coaching staff to add, remove, and organize athletes, assign personalized tasks, and track individual progress. The platform also provides a detailed overview of clubs and age categories, enabling optimized talent development and streamlined internal organization. The system emphasizes scalability, intuitive user experience, and integrated features that simplify sports management."
+                            data-features="Athlete management|Task assignment|Club & age overview|Mobile & backoffice|Intuitive interface"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://imgur.com/fDnWcjT.png"
+                                    alt="Viriatos Scouting"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>Viriatos Scouting</h4>
+                                <p>
+                                    Athlete management app for clubs and
+                                    coaches.
+                                </p>
+                                <div class="project-tech">
+                                    <span>React</span>
+                                    <span>JS</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div
+                            class="project-card"
+                            data-images="https://imgur.com/hREt0Ho.png,
+                            https://imgur.com/QXIvf1x.png,
+                            https://imgur.com/W7aSzop.png,
+                            https://imgur.com/gIYw3U6.png,
+                            https://i.imgur.com/EfgG23Y.gif"
+                            data-desc="The ESTGV Career Platform is a web-based application designed to connect students and alumni with internship and job opportunities. The system supports multiple user roles, including students, companies, managers, and administrators, each with dedicated dashboards tailored to their needs. Students can explore internship and job proposals, manage their profiles by adding technical and soft skills, and receive recommended opportunities based on skill matching. Companies can publish proposals and interact with interested candidates, while administrators and managers oversee companies, users, and platform content. The platform focuses on usability, structured role management, and efficient career matchmaking."
+                            data-features="Multi-role dashboards|Internship & job listings|Skill-based recommendations|Company & proposal management|Student interest tracking"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://imgur.com/hREt0Ho.png"
+                                    alt="ESTGV Career Platform"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>ESTGV Career Platform</h4>
+                                <p>
+                                    A career platform connecting students and
+                                    companies.
+                                </p>
+                                <div class="project-tech">
+                                    <span>React</span>
+                                    <span>JS</span>
+                                    <span>Node.js</span>
+                                    <span>PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 6 -->
+                        <div
+                            class="project-card"
+                            data-images="https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg"
+                        >
+                            <div class="project-thumb">
+                                <img
+                                    src="https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg"
+                                    alt="Coming Soon"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h4>Coming Soon</h4>
+                                <p>Coming Soon</p>
+                                <div class="project-tech">
+                                    <span>:)</span>
+                                    <span>:D</span>
+                                    <span>:o</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: CONTACT -->
+            <section class="screen-section contact">
+                <div class="content">
+                    <h2>Contact Me</h2>
+                    <form class="contact-form">
+                        <input type="email" placeholder="Your Email" required />
+                        <textarea
+                            placeholder="Write your message here..."
+                            required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+
+                <img
+                    src="img/fill-black-short.png"
+                    class="fillBlackShort"
+                    alt="fillBlackShort"
+                />
+
+                <!-- NEW: FOOTER -->
+                <footer class="site-footer">
+                    <button
+                        id="back-to-top"
+                        class="back-to-top"
+                        title="Back to Top"
+                    >
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+
+                    <div class="footer-marquee">
+                        <div class="marquee-track">
+                            <span
+                                >WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★</span
+                            >
+                            <span
+                                >WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★</span
+                            >
+                            <span
+                                >WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★ WEAKYSTAR ★</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="footer-info">
+                        <p>
+                            &copy; {new Date().getFullYear()} Weaky★. All rights reserved.
+                        </p>
+                    </div>
+
+                    <div class="footer-socials">
+                        <a href="https://github.com/Weakystar0" target="_blank"
+                            ><i class="devicon-github-original"></i></a
+                        >
+                        <a
+                            href="https://steamcommunity.com/id/weakystar/"
+                            target="_blank"
+                            ><img
+                                src="https://cdn.simpleicons.org/steam/white"
+                                width="20"
+                                alt="Steam"
+                            /></a
+                        >
+                        <a href="https://x.com/weakyyyyy" target="_blank"
+                            ><img
+                                src="https://cdn.simpleicons.org/x/white"
+                                width="20"
+                                alt="X"
+                            /></a
+                        >
+                    </div>
+                </footer>
+            </section>
+        </main>
+        <script src="../scripts/scroll.js"></script>
+        <script src="../scripts/tab-title.js"></script>
+        <script src="../scripts/projects.js"></script>
+    </body>
+</html>
