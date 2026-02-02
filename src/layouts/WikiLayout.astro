@@ -1,0 +1,290 @@
+---
+// src/layouts/WikiLayout.astro
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+    allPages: any[];
+}
+
+const { title, allPages } = Astro.props;
+
+// Sort pages by the 'order' number from markdown frontmatter
+const sortedPages = allPages.sort((a: any, b: any) => (a.data.order || 99) - (b.data.order || 99));
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Weekoo Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="wiki-body">
+    
+    <!-- TOP NAVBAR -->
+    <nav class="wiki-navbar">
+        <div class="nav-left">
+            <button id="sidebar-toggle" class="sidebar-toggle-btn" title="Toggle Sidebar">
+                <span>&#9776;</span>
+            </button>
+            <div class="logo">Weekoo<span>Wiki</span></div>
+        </div>
+
+        <div class="links">
+            <a href="/">Back to Portfolio</a>
+            <a href="https://discord.com" class="invite-btn" target="_blank">Invite Bot</a>
+        </div>
+    </nav>
+
+    <!-- MAIN WRAPPER (Controls the layout state) -->
+    <div id="wiki-wrapper" class="wiki-wrapper">
+        
+        <!-- MOBILE OVERLAY -->
+        <div id="wiki-overlay" class="wiki-overlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="wiki-sidebar" id="wiki-sidebar">
+            <div class="sidebar-inner">
+                <h3>Documentation</h3>
+                <ul>
+                    {sortedPages.map((page: any) => {
+                        const cleanSlug = page.id.replace(/\.[^/.]+$/, "");
+                        return (
+                            <li>
+                                <a href={`/weekoo-wiki/${cleanSlug}`} class={Astro.url.pathname.includes(cleanSlug) ? 'active' : ''}>
+                                    <span class="nav-icon">📁</span>
+                                    <span class="nav-text">{page.data.title}</span>
+                                </a>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="wiki-content">
+            <article class="prose">
+                <slot /> 
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // Use standard JS logic to handle the toggle
+        const toggleBtn = document.getElementById('sidebar-toggle');
+        const wrapper = document.getElementById('wiki-wrapper');
+        const overlay = document.getElementById('wiki-overlay');
+
+        function handleToggle() {
+            wrapper?.classList.toggle('sidebar-collapsed');
+            // On mobile, we also toggle the overlay
+            if (window.innerWidth <= 768) {
+                overlay?.classList.toggle('active');
+            }
+        }
+
+        toggleBtn?.addEventListener('click', handleToggle);
+        overlay?.addEventListener('click', handleToggle);
+
+        // Optional: Close sidebar automatically if window is resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                overlay?.classList.remove('active');
+            }
+        });
+    </script>
+
+  </body>
+</html>
+
+<style>
+    /* 1. BASE WIKI STYLES */
+    .wiki-body {
+        background-color: #0f0f13;
+        color: #ddd;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Prevent body scroll, use inner container scroll */
+    }
+
+    /* 2. NAVBAR */
+    .wiki-navbar {
+        height: 60px;
+        background: #16161e;
+        border-bottom: 1px solid #2a2a3c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+        z-index: 1000;
+        flex-shrink: 0;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 1rem; }
+
+    .sidebar-toggle-btn {
+        background: transparent;
+        border: 1px solid #333;
+        color: #fff;
+        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+    }
+
+    .sidebar-toggle-btn:hover { background: #2a2a3c; border-color: #6366f1; }
+
+    .logo { font-weight: bold; font-size: 1.1rem; letter-spacing: 0.5px; }
+    .logo span { color: #6366f1; margin-left: 2px; }
+    
+    .links { display: flex; align-items: center; gap: 1.5rem; }
+    .links a { color: #888; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+    .links a:hover { color: #fff; }
+    
+    .invite-btn {
+        background: #6366f1;
+        color: white !important;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+    /* 3. WRAPPER & LAYOUT LOGIC */
+    .wiki-wrapper {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        height: calc(100vh - 60px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 4. SIDEBAR */
+    .wiki-sidebar {
+        width: 260px; /* Expanded Width */
+        background: #16161e;
+        border-right: 1px solid #2a2a3c;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
+        z-index: 500;
+        flex-shrink: 0;
+    }
+
+    .sidebar-inner {
+        width: 260px; /* Keep content at fixed width so it doesn't squish during transition */
+        padding: 1.5rem;
+    }
+
+    .wiki-sidebar h3 { 
+        color: #6366f1; 
+        font-size: 0.75rem; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+    }
+
+    .wiki-sidebar ul { list-style: none; padding: 0; margin: 0; }
+    .wiki-sidebar li { margin-bottom: 0.4rem; }
+    
+    .wiki-sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #71717a;
+        text-decoration: none;
+        padding: 0.6rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        transition: 0.2s;
+    }
+
+    .wiki-sidebar a:hover { background: #6366f11a; color: #fff; }
+    .wiki-sidebar a.active { background: #2a2a3c; color: #fff; border: 1px solid #3b3b4f; }
+
+    .nav-icon { font-size: 1rem; opacity: 0.7; }
+
+    /* 5. COLLAPSED STATE (Desktop) */
+    .sidebar-collapsed .wiki-sidebar {
+        width: 0px; /* Hides sidebar completely on desktop */
+        border-right: none;
+    }
+
+    /* 6. CONTENT AREA */
+    .wiki-content {
+        flex: 1;
+        padding: 2.5rem 4rem;
+        overflow-y: auto;
+        background: #0f0f13;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .prose {
+        max-width: 900px;
+        width: 100%;
+        margin: 0;
+    }
+
+    /* MARKDOWN TYPOGRAPHY */
+    .prose :global(h1) { font-size: 2.5rem; color: #fff; margin-bottom: 1.5rem; font-weight: 700; }
+    .prose :global(h2) { font-size: 1.75rem; color: #fff; border-bottom: 1px solid #2a2a3c; padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .prose :global(p) { line-height: 1.7; color: #94a3b8; margin-bottom: 1.25rem; font-size: 1.05rem; }
+    .prose :global(ul) { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #94a3b8; }
+    .prose :global(li) { margin-bottom: 0.5rem; }
+    .prose :global(code) { background: #1e1e2e; color: #e2e8f0; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+    .prose :global(pre) { background: #16161e; padding: 1.25rem; border-radius: 12px; border: 1px solid #2a2a3c; overflow-x: auto; margin-bottom: 1.5rem; }
+
+    /* 7. MOBILE OVERLAY */
+    .wiki-overlay {
+        position: fixed;
+        top: 60px; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(3px);
+        z-index: 400;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    /* --- MOBILE RESPONSIVE (Switch to Drawer) --- */
+    @media (max-width: 768px) {
+        .wiki-navbar { padding: 0 1rem; }
+        .links { display: none; } /* Hide extra links to keep navbar clean */
+        
+        /* Mobile: Default is collapsed/hidden */
+        .wiki-sidebar {
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%;
+            width: 280px;
+            transform: translateX(-100%);
+            border-right: 1px solid #2a2a3c;
+        }
+
+        /* Mobile: Expanded state (Overlay active) */
+        .sidebar-collapsed .wiki-sidebar {
+            width: 280px; /* Keep width fixed on mobile */
+            transform: translateX(0);
+        }
+
+        .wiki-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .wiki-content { padding: 1.5rem; }
+        .prose :global(h1) { font-size: 2rem; }
+    }
+</style>

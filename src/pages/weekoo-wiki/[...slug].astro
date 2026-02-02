@@ -1,0 +1,29 @@
+---
+// src/pages/weekoo-wiki/[...slug].astro
+import { getCollection, render } from 'astro:content';
+import WikiLayout from '../../layouts/WikiLayout.astro';
+
+export async function getStaticPaths() {
+  const wikiEntries = await getCollection('weekoo');
+  
+  // DEBUG: Print what files Astro found to your terminal
+  console.log("Found Wiki Entries:", wikiEntries.map(e => e.id));
+
+  return wikiEntries.map(entry => {
+    // Remove file extension if it exists (e.g., "introduction.md" -> "introduction")
+    const cleanSlug = entry.id.replace(/\.[^/.]+$/, "");
+    
+    return {
+      params: { slug: cleanSlug }, 
+      props: { entry, allEntries: wikiEntries },
+    };
+  });
+}
+
+const { entry, allEntries } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<WikiLayout title={entry.data.title} allPages={allEntries}>
+    <Content />
+</WikiLayout>

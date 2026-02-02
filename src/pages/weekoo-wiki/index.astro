@@ -1,0 +1,17 @@
+---
+// src/pages/weekoo-wiki/index.astro
+import { getCollection } from 'astro:content';
+
+// 1. Get all pages
+const wikiEntries = await getCollection('weekoo');
+
+// 2. Sort them to find the first one (Order: 1)
+const sortedEntries = wikiEntries.sort((a: any, b: any) => a.data.order - b.data.order);
+const firstPage = sortedEntries[0];
+
+// 3. Clean the ID to get the URL
+const firstPageSlug = firstPage.id.replace(/\.[^/.]+$/, "");
+
+// 4. Redirect
+return Astro.redirect(`/weekoo-wiki/${firstPageSlug}`);
+---
