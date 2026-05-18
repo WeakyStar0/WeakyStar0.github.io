@@ -25,7 +25,7 @@ projectCards.forEach(card => {
     card.addEventListener('click', () => {
         const title = card.querySelector('h4').innerText;
         const tech = card.querySelector('.project-tech').innerHTML;
-        
+
         const images = (card.getAttribute('data-images') || '').split(',');
         const longDesc = card.getAttribute('data-desc') || "No description available.";
         const featuresString = card.getAttribute('data-features') || "";
@@ -34,26 +34,43 @@ projectCards.forEach(card => {
         totalSlides = images.length;
         track.innerHTML = '';
         dotsNav.innerHTML = '';
-        
+
         images.forEach((imgUrl, index) => {
-            const img = document.createElement('img');
-            img.src = imgUrl;
-            img.addEventListener('dragstart', (e) => e.preventDefault());
-            track.appendChild(img);
-            
+            const trimmed = imgUrl.trim();
+
+            if (trimmed.startsWith('yt:')) {
+                // YouTube embed
+                const videoId = trimmed.slice(3);
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/wLq_75SlQGw?si=02GX7M4O6NzFlXC2`;
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+                iframe.setAttribute('frameborder', '0');
+                iframe.style.border = 'none';
+                //iframe.style.width = '100%';
+                //iframe.style.height = '100%';
+                track.appendChild(iframe);
+            } else {
+                // Regular image
+                const img = document.createElement('img');
+                img.src = trimmed;
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+                track.appendChild(img);
+            }
+
             const dot = document.createElement('div');
             dot.classList.add('c-dot');
-            if(index === 0) dot.classList.add('active');
+            if (index === 0) dot.classList.add('active');
             dot.addEventListener('click', () => {
                 currentIndex = index;
                 updateSlidePosition();
             });
             dotsNav.appendChild(dot);
         });
-
         document.getElementById('overlay-title').innerText = title;
         document.getElementById('overlay-tech').innerHTML = tech;
-        
+
         document.getElementById('overlay-desc').innerText = longDesc;
 
         featureList.innerHTML = '';
