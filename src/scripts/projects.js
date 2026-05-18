@@ -71,8 +71,29 @@ projectCards.forEach(card => {
         document.getElementById('overlay-title').innerText = title;
         document.getElementById('overlay-tech').innerHTML = tech;
 
-        document.getElementById('overlay-desc').innerText = longDesc;
+        const rawDesc = card.getAttribute('data-desc') || "No description available.";
 
+        // Parse [LINK:label:url] markers
+        const descEl = document.getElementById('overlay-desc');
+        const linkRegex = /\[LINK:([^:]+):([^\]]+)\]/g;
+        const parts = rawDesc.split(linkRegex);
+
+        descEl.innerHTML = '';
+        for (let i = 0; i < parts.length; i += 3) {
+            // Plain text chunk
+            if (parts[i]) descEl.appendChild(document.createTextNode(parts[i]));
+            // Link chunk (label = parts[i+1], url = parts[i+2])
+            if (parts[i + 1]) {
+                const a = document.createElement('a');
+                a.href = parts[i + 2];
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.innerText = parts[i + 1];
+                a.style.color = '#a5b4fc';
+                a.style.textDecoration = 'underline';
+                descEl.appendChild(a);
+            }
+        }
         featureList.innerHTML = '';
         if (featuresString) {
             const features = featuresString.split('|');
